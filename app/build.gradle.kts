@@ -23,6 +23,9 @@ dependencies {
 
     // This dependency is used by the application.
     implementation(libs.guava)
+
+    // Yahoo Finance API
+    implementation("com.yahoofinance-api:YahooFinanceAPI:3.17.0")
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
