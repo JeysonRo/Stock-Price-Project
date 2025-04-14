@@ -8,11 +8,17 @@
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     application
+    id("org.openjfx.javafxplugin") version "0.1.0"
 }
 
 repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
+}
+
+javafx {
+    version = "21"
+    modules = listOf("javafx.controls", "javafx.fxml")
 }
 
 dependencies {
@@ -24,8 +30,11 @@ dependencies {
     // This dependency is used by the application.
     implementation(libs.guava)
 
-    // Yahoo Finance API
+    // Yahoo Finance API - updated version
     implementation("com.yahoofinance-api:YahooFinanceAPI:3.17.0")
+    
+    // Add SLF4J implementation to fix logging
+    implementation("org.slf4j:slf4j-simple:2.0.9")
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
@@ -37,7 +46,7 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass = "org.example.App"
+    mainClass.set("org.example.App")
 }
 
 tasks.named<Test>("test") {
